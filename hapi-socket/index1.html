@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Hello world socket.io</title>
+	</head>
+	<body>
+
+		<div id="count"></div>
+		<button id="clickMe">Increment</button>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io('http://localhost:3000');
+			socket.on('count', function (data) {
+				document.getElementById('count').innerHTML = data.count;
+				//socket.emit('something', {my: 'data'});
+			});
+
+			document.getElementById('clickMe').onclick = function(){
+				socket.emit('increase');
+			};
+			</script>
+	</body>
+</html>
